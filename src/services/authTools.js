@@ -27,7 +27,7 @@ const basicAuthMiddleware = async (req, res, next) => {
 };
 
 const adminOnlyMiddleware = async (req, res, next) => {
-    if (!req && req.user.role === "admin") {
+    if (req.user && req.user.role === "admin") {
         next();
     } else {
         const err = new Error("Badmin only");
